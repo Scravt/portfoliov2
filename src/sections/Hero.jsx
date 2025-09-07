@@ -1,12 +1,13 @@
 import React from 'react'
 import { words } from '../constants'
 import Button from '../components/Button'
+import HeroExpierience from '../components/HeroModels/HeroExpierience'
 
 const Hero = () => {
     return (
         <section id="hero" className='relative overflow-hidden'>
-            <div className='absolute top-0 left-0 z-10'>
-                <image src='/images/bg.png' alt='bg' />
+            <div className="absolute w-full top-0 left-0 z-10">
+                <img src="/images/bg.png" alt=""  />
             </div>
 
             <div className='hero-layout'>
@@ -32,13 +33,13 @@ const Hero = () => {
                                 </span>
 
                             </h1>
-                          
+
                             <h1>into real Projects</h1>
                             <h1>that deliver results</h1>
-                              <p className='text-white-50 md:text-xl relative z-10 pointer-events-none'>
-                                Hello, I'm Gonzalo 
+                            <p className='text-white-50 md:text-xl relative z-10 pointer-events-none'>
+                                Hello, I'm Gonzalo
                             </p>
-                            <Button 
+                            <Button
                                 className='md:w-80 md:h-167 w-60 h-12'
                                 id='button'
                                 text='See my Work'
@@ -47,7 +48,12 @@ const Hero = () => {
                         </div>
                     </div>
                 </header>
-                
+                <figure>
+                    <div className='hero-3d-layout'>
+                        <HeroExpierience />
+                    </div>
+                </figure>
+
                 {/* Right side 3d model */}
             </div>
         </section>
