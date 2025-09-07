@@ -1,13 +1,30 @@
-import React from 'react'
+import { useMediaQuery } from 'react-responsive';
 import { words } from '../constants'
 import Button from '../components/Button'
 import HeroExpierience from '../components/HeroModels/HeroExpierience'
+import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+import AnimatedCounter from '../components/AnimatedCounter'
 
 const Hero = () => {
+    const isTablet = useMediaQuery(
+    { maxWidth: 1024 },
+    {
+      ssrMatchMedia: () => ({ matches: false }), // previene errores en SSR
+    }
+  );
+    
+    useGSAP(() => {
+        gsap.fromTo(
+            '.hero-text h1',
+            { y: 100, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, ease: 'power2.inOut', stagger: 0.2 }
+        );
+    }, []);
     return (
         <section id="hero" className='relative overflow-hidden'>
             <div className="absolute w-full top-0 left-0 z-10">
-                <img src="/images/bg.png" alt=""  />
+                <img src="/images/bg.png" alt="" />
             </div>
 
             <div className='hero-layout'>
@@ -41,8 +58,9 @@ const Hero = () => {
                             </p>
                             <Button
                                 className='md:w-80 md:h-167 w-60 h-12'
-                                id='button'
+                                
                                 text='See my Work'
+                                id={'counter'}
                             />
 
                         </div>
@@ -50,12 +68,12 @@ const Hero = () => {
                 </header>
                 <figure>
                     <div className='hero-3d-layout'>
-                        <HeroExpierience />
+                        <HeroExpierience isTablet={isTablet} />
                     </div>
                 </figure>
-
-                {/* Right side 3d model */}
             </div>
+
+            <AnimatedCounter />
         </section>
     )
 }

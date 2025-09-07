@@ -1,36 +1,38 @@
-import { OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { useMediaQuery } from 'react-responsive';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { Room } from './Room';
+import HeroLights from './HeroLights';
 
-
-
-const HeroExpierience = () => {
-    const isTablet = useMediaQuery('(max-width: 1024px)');
-    //const isMobile = useMediaQuery('(max-width: 768px)');
+const HeroExpierience = ({ isTablet }) => {
   return (
-    <Canvas 
-        camera={{ position: [0, 0, 15], fov: 45 }}>
-            <ambientLight intensity={0.2}  color="#1a1a40"/>
-            <directionalLight position={[5, 5, 5]} intensity={1} />
+    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+      <OrbitControls
+        enablePan={false}
+        enableZoom={!isTablet} // Deshabilita zoom en tablets
+        autoRotate
+        autoRotateSpeed={0.5}
+        maxDistance={20}
+        minDistance={5}
+        minPolarAngle={Math.PI / 5}
+        maxPolarAngle={Math.PI / 2}
+        minAzimuthAngle={-Math.PI / 4} // límite horizontal izquierda
+        maxAzimuthAngle={Math.PI / 4}  // límite horizontal derecha
+        makeDefault // asegura que solo exista un control activo
+      />
 
-            <OrbitControls 
-            enablePan={false}
-            enableZoom={!isTablet } 
-            autoRotate 
-            autoRotateSpeed={0.5} 
-            maxDistance={20}
-            minDistance={5}
-            minPolarAngle={Math.PI / 5}
-            maxPolarAngle={Math.PI / 2}
-        />
-        HeroExpierience
-        <mesh>
+      {/* Luces personalizadas */}
+      <HeroLights />
 
-        </mesh>
-
-
+      {/* Grupo que contiene el modelo */}
+      <group
+        scale={isTablet ? 0.7 : 1}
+        position={[0, -3.5, 0]}
+        rotation={[0, -Math.PI / 4, 0]}
+      >
+        <Room />
+      </group>
     </Canvas>
-  )
-}
+  );
+};
 
-export default HeroExpierience
+export default HeroExpierience;
