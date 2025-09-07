@@ -87,7 +87,7 @@ section {
   .hero-text {
     @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
     img {
-      @apply size-8 md:size-10 object-contain;
+      @apply w-8 md:w-10 object-contain;
     }
     .slide {
       @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden;
@@ -206,29 +206,39 @@ section {
     @apply relative z-20 cursor-pointer;
   }
 
-  .cta-button {
-    @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
+ .cta-button {
+  @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
 
-    .bg-circle {
-      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
-        w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
-        rounded-full bg-white-50 transition-all duration-500;
-    }
+  .bg-circle {
+    @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2
+      w-[120%] h-[120%] rounded-full bg-white-50 transition-all duration-500;
+  }
 
-    .text {
-      @apply uppercase md:text-lg text-black transition-all duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
-    }
+  /* Aquí indicamos que cuando el padre con class 'group' esté hovered */
+  &.group:hover .bg-circle {
+    @apply w-10 h-10 right-10;
+  }
 
-    .arrow-wrapper {
-      @apply group-hover:bg-white-50 size-10 rounded-full absolute right-10 top-1/2 
-        -translate-y-1/2 flex justify-center items-center overflow-hidden;
+  .text {
+    @apply uppercase md:text-lg text-black transition-all duration-500 -translate-x-5 xl:translate-x-0;
+  }
 
-      img {
-        @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
-      }
+  &.group:hover .text {
+    @apply text-white-50 -translate-x-5;
+  }
+
+  .arrow-wrapper {
+    @apply w-10 h-10 rounded-full absolute right-10 top-1/2 -translate-y-1/2 flex justify-center items-center overflow-hidden;
+
+    img {
+      @apply w-5 h-5 xl:-translate-y-32 translate-y-0 animate-bounce transition-all duration-500;
     }
   }
+
+  &.group:hover .arrow-wrapper img {
+    @apply translate-y-0;
+  }
+}
 
   .card-border {
     @apply border border-black-50 bg-black-100;
@@ -247,7 +257,7 @@ section {
   }
 
   .timeline-logo {
-    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
+    @apply md:w-20 md:h-20 w-10 h-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
   }
 
   .exp-card-wrapper {
@@ -312,7 +322,7 @@ section {
       @apply flex items-center justify-center gap-5;
 
       .icon {
-        @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
+        @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl w-10 h-10 md:w-12 md:h-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
       }
 
       img {
@@ -322,7 +332,7 @@ section {
   }
 }
 
-/* Hero text slider starts */
+/* Hero text slider */
 .slide {
   display: inline-block;
   flex-direction: column;
@@ -336,33 +346,15 @@ section {
 }
 
 @keyframes wordSlider {
-  0% {
-    transform: translateY(0.5%);
-  }
-  12.5% {
-    transform: translateY(-12.5%);
-  }
-  25% {
-    transform: translateY(-25%);
-  }
-  37.5% {
-    transform: translateY(-37.5%);
-  }
-  50% {
-    transform: translateY(-50%);
-  }
-  62.5% {
-    transform: translateY(-62.5%);
-  }
-  75% {
-    transform: translateY(-75%);
-  }
-  87.5% {
-    transform: translateY(-87.5%);
-  }
+  0% { transform: translateY(0.5%); }
+  12.5% { transform: translateY(-12.5%); }
+  25% { transform: translateY(-25%); }
+  37.5% { transform: translateY(-37.5%); }
+  50% { transform: translateY(-50%); }
+  62.5% { transform: translateY(-62.5%); }
+  75% { transform: translateY(-75%); }
+  87.5% { transform: translateY(-87.5%); }
 }
-
-/* Hero Text slider ends */
 
 .gradient-line {
   width: 2px;
@@ -378,23 +370,14 @@ section {
 
 .gradient-edge:nth-of-type(1) {
   left: 0;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
 .gradient-edge:nth-of-type(2) {
   right: 0;
-  background: linear-gradient(
-    -90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
 }
 
-/* marquee */
+/* Marquee */
 .marquee {
   width: 100dvw;
   overflow: hidden;
@@ -413,15 +396,11 @@ section {
   float: left;
 }
 @keyframes marquee {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: -100%;
-  }
+  0% { left: 0; }
+  100% { left: -100%; }
 }
-/* marquee end */
 
+/* Cards */
 .card {
   --start: 0;
   position: relative;
@@ -463,8 +442,7 @@ section {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  filter: blur(10px);
-  filter: saturate(200);
+  filter: blur(10px) saturate(200%);
 }
 
 .card:hover::before {
