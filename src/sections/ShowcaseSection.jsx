@@ -10,27 +10,37 @@ const ShowcaseSection = () => {
     const project1Ref = useRef(null);
     const project2Ref = useRef(null);
     const project3Ref = useRef(null);
-    const projects = [project1Ref.current, project2Ref.current, project3Ref.current];
+    
 
-    projects.forEach((project, index) => {
-        gsap.fromTo(project,
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                delay: index * 0.3,
-                scrollTrigger: {
-                    trigger: project,
-                    start: "top bottom-=100",
-                    markers: true,
-                    toggleActions: "play none none none"
-                },
-            });
-
-    });
     useGSAP(() => {
-        gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 })
+        const projects = [project1Ref.current, project2Ref.current, project3Ref.current];
+
+
+        gsap.fromTo(
+            sectionRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 1.5 }
+            )
+
+        projects.forEach((project, index) => {
+            gsap.fromTo(project,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: 0.3*(index +1),
+                    scrollTrigger: {
+                        trigger: project,
+                        start: "top bottom-=100",
+                        markers: true,
+                        toggleActions: "play none none none"
+                    },
+                });
+
+        });
+
+
 
     }, []);
 

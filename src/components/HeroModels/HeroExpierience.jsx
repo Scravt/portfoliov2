@@ -8,7 +8,7 @@ const HeroExpierience = ({ isTablet }) => {
     <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
       <OrbitControls
         enablePan={false}
-        enableZoom={!isTablet} // Deshabilita zoom en tablets
+        enableZoom={false} // Deshabilita zoom en tablets
         autoRotate
         autoRotateSpeed={0.5}
         maxDistance={20}
