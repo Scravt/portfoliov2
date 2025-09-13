@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
 
+    // cambiar para agregar kiura, sectrabao y algo freelance/educacion 
+
 useGSAP(() => {
   gsap.utils.toArray('.timeline-card').forEach((card) => {
     gsap.from(card, {
