@@ -89,26 +89,62 @@ const abilities = [
   },
 ];
 
-const techStackImgs = [
+const techStackImgs =  [
+  // --- Frontend ---
   {
-    name: "React Developer",
-    imgPath: "/images/logos/react.png",
+    name: "JavaScript",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
   },
   {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
+    name: "TypeScript",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
   },
   {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
+    name: "React",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
   },
   {
-    name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
+    name: "Next.js",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
   },
   {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
+    name: "HTML5",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+  },
+  {
+    name: "CSS3",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
+  },
+
+  // --- Backend ---
+  {
+    name: "Node.js",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Express",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg",
+  },
+  
+
+  // --- Bases de Datos ---
+  {
+    name: "PostgreSQL",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+  },
+
+  // --- Herramientas ---
+  {
+    name: "Git",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+  },
+  {
+    name: "Docker",
+    imgPath: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
   },
 ];
 
@@ -147,42 +183,52 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
-    responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
-    ],
-  },
-  {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+    review:
+      "Gonzalo has been a key part of our digital transformation projects. His ability to build scalable front-end solutions and automate complex processes has greatly improved our workflows.",
+    employer: "Government of Entre Ríos",
+    imgPath: "/images/gob er.jpg",
+    logoPath: "/images/gob er.jpg",
     title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    date: "October 2024 - Present",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Developed a web platform for appointment management and digital document processing using React and TailwindCSS.",
+      "Implemented a virtual assistant (Web + WhatsApp) integrated with a knowledge base built alongside technical and legal teams.",
+      "Designed a data integration system connecting AFIP, banks, and other government APIs to cross-reference company and worker information by CUIT.",
+      "Led the migration from Windows to Linux and organized staff training sessions to enhance efficiency and autonomy.",
     ],
   },
   {
-    review: "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    review:
+      "Gonzalo played a vital role in developing Kiura’s SaaS platform. His work improved the stability and usability of our real-time communication features.",
+    employer: "Kiura",
+    imgPath: "/images/kiura.png",
+    logoPath: "/images/kiura.png",
+    title: "Front-End Developer",
+    date: "March 2024 - September 2024",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Designed and developed a scalable SaaS platform for mental health professionals using React, TailwindCSS, Node.js, and Express.",
+      "Integrated real-time features such as video calls, chat, and booking using WebSockets and RESTful APIs.",
+      "Improved performance, accessibility, and responsiveness across mobile and desktop devices.",
+      "Collaborated with designers and backend developers to deliver seamless, user-centered experiences.",
+    ],
+  },
+  {
+    review:
+      "Gonzalo’s early work in systems administration and technical support gave him a deep understanding of infrastructure and process optimization within public institutions.",
+    imgPath: "/images/gob er.jpg",
+    employer: "Government of Entre Ríos",
+    logoPath: "/images/gob er.jpg",
+    title: "Administration & Systems Analyst",
+    date: "January 2015 - February 2024",
+    responsibilities: [
+      "Provided technical support and maintained internal systems across multiple departments.",
+      "Assisted in the development and implementation of in-house tools to streamline administrative workflows.",
+      "Coordinated digital initiatives and contributed to the modernization of legacy infrastructure.",
+      "Built a strong foundation in IT operations, which later supported his transition to full-stack development.",
     ],
   },
 ];
+
 
 const expLogos = [
   {

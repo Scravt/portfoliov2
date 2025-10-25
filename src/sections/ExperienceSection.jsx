@@ -54,8 +54,12 @@ useGSAP(() => {
                             <div key={card.title} className='exp-card-wrapper '>
                                 <div className='xl:w-2/6'>
                                     <GlowCard card={card} index={index}>
-                                        <div>
-                                            <img src={card.imgPath} alt={card.title} />
+                                        <div className='flex gap-3'>
+                                            <img src={card.imgPath} alt={card.title} className='h-8' />
+                                            <div className='h-8  flex items-center'>
+                                                {card.employer}
+                                            </div>
+
                                         </div>
                                     </GlowCard>
                                 </div>

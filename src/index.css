@@ -257,7 +257,11 @@ section {
   }
 
   .timeline-logo {
-    @apply md:w-20 md:h-20 w-10 h-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
+    @apply md:w-20 md:h-20 w-10 h-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100 p-4;
+  }
+
+  .timeline-logo img {
+    @apply w-full h-full object-contain rounded-full;
   }
 
   .exp-card-wrapper {
@@ -280,12 +284,21 @@ section {
     }
   }
 
-  .tech-grid {
-    @apply grid xl:grid-cols-5 md:grid-cols-3 grid-cols-1 xl:gap-16 md:gap-10 gap-5 mt-16;
-  }
+ 
+.tech-grid {
+  @apply grid 
+    grid-cols-1         /* 📱 Móviles chicos: 1 columna */
+    sm:grid-cols-2      /* Móviles grandes: 2 columnas */
+    md:grid-cols-3      /* Tablets: 3 columnas */
+    lg:grid-cols-4      /* Laptops: 4 columnas */
+    xl:grid-cols-6      /* Monitores estándar: 6 columnas */
+    2xl:grid-cols-7     /* Monitores grandes: 7 columnas */
+    gap-5 md:gap-8 lg:gap-10 xl:gap-14 2xl:gap-16 mt-16;
+}
+
 
   .tech-icon-wrapper {
-    @apply flex justify-center items-center w-52 h-60 relative;
+    @apply flex justify-center items-center w-52 h-44 relative;
   }
 
   form {

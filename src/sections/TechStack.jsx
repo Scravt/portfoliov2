@@ -15,7 +15,7 @@ const TechStack = () => {
                 />
             </div>
 
-            <div className='tech-grid p-20 h-full w-full'>
+            <div className='tech-grid p-10 h-full w-full'>
                 {techStackImgs.map((icon) => (
                     <div
                         key={icon.name}
@@ -24,11 +24,11 @@ const TechStack = () => {
                         <div className='tech-card-animated-bg'>
                             <div className='tech-card-content'>
                                 <div className='tech-icon-wrapper'>
-                                    <img src={icon.imgPath}  alt="" />
+                                    <img src={icon.imgPath}  alt=""  className='h-24' />
                                          
                                 </div>
                                 <div className='padding-x w-full' >
-                                    <p>
+                                    <p className=' pb-4'>
                                         {icon.name}
                                     </p>
 
