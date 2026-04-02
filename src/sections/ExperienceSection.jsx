@@ -11,16 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 const ExperienceSection = () => {
 
 useGSAP(() => {
-  if (window.innerWidth < 768) return; // Disable animations on mobile frames to prevent scroll locking
-
   gsap.utils.toArray('.timeline-card').forEach((card) => {
     gsap.from(card, {
       opacity: 0,
       xPercent:-100,
       duration: 1,
+      force3D: true,
       scrollTrigger: {
         trigger: card,
         start: 'top 80%',
+        onEnter: () => gsap.set(card, { willChange: 'transform, opacity' }),
+        onLeaveBack: () => gsap.set(card, { willChange: 'auto' }),
         toggleActions: 'play none none none'
       }
     });
@@ -29,18 +30,21 @@ useGSAP(() => {
   gsap.to('.timeline',{
     transformOrigin:'bottom bottom',
     ease:'power1.inOut',
+    force3D: true,
     scrollTrigger:{
         trigger:'.timeline',
         start:'top center',
         end: '70%center',
+        onEnter: () => gsap.set('.timeline', { willChange: 'transform' }),
+        onLeaveBack: () => gsap.set('.timeline', { willChange: 'auto' }),
         onUpdate: (self)=>{
             gsap.to('.timeline',{
-                scaleY:1- self.progress
+                scaleY:1- self.progress,
+                force3D: true
             })
         }
     }
   })
-
 
 }, []);
 

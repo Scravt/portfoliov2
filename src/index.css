@@ -454,14 +454,22 @@ section {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-@media (min-width: 768px) {
-  .glow {
-    filter: blur(10px) saturate(200%);
-  }
+  filter: blur(10px) saturate(200%);
 }
 
 .card:hover::before {
   opacity: 1;
 }
+
+/* Mobile Triage: Reduce Paint Workload on Low-end GPUs */
+@media (max-width: 768px) {
+  .glow {
+    filter: none;
+    background-color: rgba(255, 255, 255, 0.05); /* Solid RGB replacement */
+  }
+
+  .card-border, .card {
+    backdrop-filter: none !important;
+  }
+}
+
