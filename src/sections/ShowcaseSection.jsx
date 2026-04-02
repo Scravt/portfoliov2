@@ -55,7 +55,7 @@ const ShowcaseSection = () => {
                     {/* Project 1 */}
                     <div className={projectStyle} ref={project1Ref}>
                         <div className={imageWrapperStyle + " bg-[#1c1c21]"}>
-                            <img src="/public/images/project1.png" alt="Ryde" className={imageStyle} />
+                            <img src="/images/project1.png" alt="Ryde" className={imageStyle} />
                         </div>
                         <div className='text-content flex flex-col gap-3 mt-2'>
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
@@ -84,7 +84,7 @@ const ShowcaseSection = () => {
                     {/* Project 2 */}
                     <div className={projectStyle} ref={project2Ref}>
                         <div className={imageWrapperStyle + " bg-[#ffefdb]"}>
-                            <img src="/public/images/project2.png" alt="Library Platform" className={imageStyle} style={{ objectFit: 'cover' }} />
+                            <img src="/images/project2.png" alt="Library Platform" className={imageStyle} style={{ objectFit: 'cover' }} />
                         </div>
                        <div className='text-content flex flex-col gap-3 mt-2'>
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
