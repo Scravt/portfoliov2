@@ -1,27 +1,32 @@
-import {useState,useEffect} from 'react'
+import { useEffect, useRef } from 'react'
 import { navLinks } from '../constants'
 
 const NavBar = () => {
-   const [scrolled, setScrolled] = useState(false);
+    const headerRef = useRef(null);
 
-useEffect(() => {
-  const handleScroll = () => {
-    const isScrolled = window.scrollY > 10;
-    setScrolled(isScrolled); // ✅ ahora refleja si está scrolleado o no
-  };
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!headerRef.current) return;
+            // Evita re-renders de React manipulando el DOM directamente en el hilo de scroll
+            if (window.scrollY > 10) {
+                headerRef.current.classList.add('scrolled');
+                headerRef.current.classList.remove('not-scrolled');
+            } else {
+                headerRef.current.classList.add('not-scrolled');
+                headerRef.current.classList.remove('scrolled');
+            }
+        };
 
-  window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
 
-  // Ejecuta una vez al montar para inicializar correctamente
-  handleScroll();
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
-        <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
+        <header ref={headerRef} className="navbar not-scrolled">
             <div className="inner">
                 <a href="#hero" className="logo">
                     Gonzalo Martinez

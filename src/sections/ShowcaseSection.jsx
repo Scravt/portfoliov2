@@ -30,10 +30,13 @@ const ShowcaseSection = () => {
                     y: 0,
                     duration: 1,
                     delay: 0.3*(index +1),
+                    force3D: true, // Hardware Acceleration
                     scrollTrigger: {
                         trigger: project,
                         start: "top bottom-=100",
-                        toggleActions: "play none none none"
+                        toggleActions: "play none none none",
+                        onEnter: () => gsap.set(project, { willChange: 'transform, opacity' }),
+                        onLeaveBack: () => gsap.set(project, { willChange: 'auto' }),
                     },
                 });
 
