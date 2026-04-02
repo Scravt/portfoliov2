@@ -273,7 +273,7 @@ section {
   }
 
   .tech-card-animated-bg {
-    @apply  left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700;
+    @apply left-0 bottom-0 w-full h-full bg-[#2D3240] translate-y-full group-hover:translate-y-0 transition-transform duration-700;
   }
 
   .tech-card-content {
@@ -408,8 +408,8 @@ section {
   float: left;
 }
 @keyframes marquee {
-  0% { left: 0; }
-  100% { left: -100%; }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Cards */

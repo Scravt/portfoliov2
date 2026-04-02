@@ -25,20 +25,23 @@ const Hero = () => {
   }, []);
     
     useGSAP(() => {
-        gsap.set('.hero-text h1', { willChange: 'transform, opacity' });
-        gsap.fromTo(
-            '.hero-text h1',
-            { y: 100, opacity: 0 },
-            { 
-                y: 0, 
-                opacity: 1, 
-                duration: 1, 
-                ease: 'power2.inOut', 
-                stagger: 0.2,
-                force3D: true,
-                onComplete: () => gsap.set('.hero-text h1', { willChange: 'auto' }) 
-            }
-        );
+        let mm = gsap.matchMedia();
+        mm.add("(min-width: 768px)", () => {
+            gsap.set('.hero-text h1', { willChange: 'transform, opacity' });
+            gsap.fromTo(
+                '.hero-text h1',
+                { y: 100, opacity: 0 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: 'power2.inOut', 
+                    stagger: 0.2,
+                    force3D: true,
+                    onComplete: () => gsap.set('.hero-text h1', { willChange: 'auto' }) 
+                }
+            );
+        });
     }, []);
     return (
         <section id="hero" className='relative overflow-hidden'>
@@ -101,7 +104,7 @@ const Hero = () => {
                 )}
             </div>
 
-            <AnimatedCounter />
+            {!isMobile && <AnimatedCounter />}
         </section>
     )
 }
