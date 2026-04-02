@@ -46,3 +46,4 @@ export function Room(props) {
 }
 
 useGLTF.preload('/models/optimized-room.glb')
+

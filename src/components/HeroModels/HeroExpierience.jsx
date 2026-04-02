@@ -2,10 +2,14 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Room } from './Room';
 import HeroLights from './HeroLights';
+import { Suspense } from 'react';
 
 const HeroExpierience = ({ isTablet }) => {
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+    <Canvas 
+      camera={{ position: [0, 0, 15], fov: 45 }}
+      dpr={[1, 1.5]}
+    >
       <OrbitControls
         enablePan={false}
         enableZoom={false} // Deshabilita zoom en tablets
@@ -29,7 +33,9 @@ const HeroExpierience = ({ isTablet }) => {
         position={[0, -3.5, 0]}
         rotation={[0, -Math.PI / 4, 0]}
       >
-        <Room />
+        <Suspense fallback={null}>
+          <Room />
+        </Suspense>
       </group>
     </Canvas>
   );

@@ -33,7 +33,6 @@ const ShowcaseSection = () => {
                     scrollTrigger: {
                         trigger: project,
                         start: "top bottom-=100",
-                        markers: true,
                         toggleActions: "play none none none"
                     },
                 });

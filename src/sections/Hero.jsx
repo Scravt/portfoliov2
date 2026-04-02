@@ -13,6 +13,11 @@ const Hero = () => {
       ssrMatchMedia: () => ({ matches: false }), // previene errores en SSR
     }
   );
+
+  const isMobile = useMediaQuery(
+    { maxWidth: 767 },
+    { ssrMatchMedia: () => ({ matches: false }) }
+  );
     
     useGSAP(() => {
         gsap.fromTo(
@@ -23,13 +28,13 @@ const Hero = () => {
     }, []);
     return (
         <section id="hero" className='relative overflow-hidden'>
-            <div className="absolute w-full top-0 left-0 z-10">
-                <img src="/images/bg.png" alt="" />
+            <div className="absolute w-full top-0 left-0 z-10 max-w-full overflow-hidden">
+                <img src="/images/bg.png" alt="" className="max-w-full" />
             </div>
 
             <div className='hero-layout'>
                 {/* Left side hero content */}
-                <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
+                <header className="flex flex-col justify-center md:w-full w-full md:px-20 px-5 max-w-full">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
               <h1>
@@ -68,16 +73,18 @@ const Hero = () => {
             />
           </div>
         </header>
-                <figure>
-                    <div className='hero-3d-layout relative'>
-                        {/* Transparent overlay to block touch on mobile, allowing page scroll */}
-                        <div
-                            className="absolute inset-0 z-50 md:hidden"
-                            style={{ touchAction: 'pan-y' }}
-                        />
-                        <HeroExpierience isTablet={isTablet} />
-                    </div>
-                </figure>
+                {!isMobile && (
+                  <figure>
+                      <div className='hero-3d-layout'>
+                          {/* Transparent overlay to block touch on mobile, allowing page scroll */}
+                          <div
+                              className="absolute inset-0 z-50 md:hidden"
+                              style={{ touchAction: 'pan-y' }}
+                          />
+                          <HeroExpierience isTablet={isTablet} />
+                      </div>
+                  </figure>
+                )}
             </div>
 
             <AnimatedCounter />
