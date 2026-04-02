@@ -11,41 +11,44 @@ gsap.registerPlugin(ScrollTrigger);
 const ExperienceSection = () => {
 
 useGSAP(() => {
-  gsap.utils.toArray('.timeline-card').forEach((card) => {
-    gsap.from(card, {
-      opacity: 0,
-      xPercent:-100,
-      duration: 1,
-      force3D: true,
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 80%',
-        onEnter: () => gsap.set(card, { willChange: 'transform, opacity' }),
-        onLeaveBack: () => gsap.set(card, { willChange: 'auto' }),
-        toggleActions: 'play none none none'
-      }
-    });
-  });
+  let mm = gsap.matchMedia();
 
-  gsap.to('.timeline',{
-    transformOrigin:'bottom bottom',
-    ease:'power1.inOut',
-    force3D: true,
-    scrollTrigger:{
-        trigger:'.timeline',
-        start:'top center',
-        end: '70%center',
-        onEnter: () => gsap.set('.timeline', { willChange: 'transform' }),
-        onLeaveBack: () => gsap.set('.timeline', { willChange: 'auto' }),
-        onUpdate: (self)=>{
-            gsap.to('.timeline',{
-                scaleY:1- self.progress,
-                force3D: true
-            })
+  mm.add("(min-width: 768px)", () => {
+    gsap.utils.toArray('.timeline-card').forEach((card) => {
+      gsap.from(card, {
+        opacity: 0,
+        xPercent:-100,
+        duration: 1,
+        force3D: true,
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          onEnter: () => gsap.set(card, { willChange: 'transform, opacity' }),
+          onLeaveBack: () => gsap.set(card, { willChange: 'auto' }),
+          toggleActions: 'play none none none'
         }
-    }
-  })
+      });
+    });
 
+    gsap.to('.timeline',{
+      transformOrigin:'bottom bottom',
+      ease:'power1.inOut',
+      force3D: true,
+      scrollTrigger:{
+          trigger:'.timeline',
+          start:'top center',
+          end: '70%center',
+          onEnter: () => gsap.set('.timeline', { willChange: 'transform' }),
+          onLeaveBack: () => gsap.set('.timeline', { willChange: 'auto' }),
+          onUpdate: (self)=>{
+              gsap.to('.timeline',{
+                  scaleY:1- self.progress,
+                  force3D: true
+              })
+          }
+      }
+    })
+  });
 }, []);
 
     return (
@@ -70,7 +73,7 @@ useGSAP(() => {
                                 <div className='xl:w-4/6'>
                                     <div className='flex items-start'>
                                         <div className='timeline-wrapper'>
-                                            <div className='timeline'/>
+                                            <div className='timeline hidden md:block'/>
                                             <div className='gradient-line w-1 h-full'/>
 
                                         </div>
