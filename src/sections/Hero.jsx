@@ -69,7 +69,12 @@ const Hero = () => {
           </div>
         </header>
                 <figure>
-                    <div className='hero-3d-layout'>
+                    <div className='hero-3d-layout relative'>
+                        {/* Transparent overlay to block touch on mobile, allowing page scroll */}
+                        <div
+                            className="absolute inset-0 z-50 md:hidden"
+                            style={{ touchAction: 'pan-y' }}
+                        />
                         <HeroExpierience isTablet={isTablet} />
                     </div>
                 </figure>

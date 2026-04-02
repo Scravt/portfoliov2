@@ -10,8 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
 
-    // cambiar para agregar kiura, sectrabao y algo freelance/educacion 
-
 useGSAP(() => {
   gsap.utils.toArray('.timeline-card').forEach((card) => {
     gsap.from(card, {
@@ -81,7 +79,7 @@ useGSAP(() => {
 
                                                 </p>
                                                 <p className='text-[#893cb5] italic '>
-                                                    Responsabilities
+                                                    Responsibilities
                                                 </p>
                                                 <ul className='list-disc ms-5 flex flex-col gap-5 text-white-50'>
                                                     {card.responsibilities.map((responsability)=>(
