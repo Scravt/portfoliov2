@@ -7,13 +7,13 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import AnimatedCounter from '../components/AnimatedCounter'
 
+const tabletMediaQuery = { maxWidth: 1024 };
+const ssrSettings = {
+  ssrMatchMedia: () => ({ matches: false }), // previene errores en SSR
+};
+
 const Hero = () => {
-    const isTablet = useMediaQuery(
-    { maxWidth: 1024 },
-    {
-      ssrMatchMedia: () => ({ matches: false }), // previene errores en SSR
-    }
-  );
+    const isTablet = useMediaQuery(tabletMediaQuery, ssrSettings);
 
   const [isMobile, setIsMobile] = useState(false);
 
