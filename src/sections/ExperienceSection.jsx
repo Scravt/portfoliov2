@@ -11,6 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 const ExperienceSection = () => {
 
 useGSAP(() => {
+  if (window.innerWidth < 768) return; // Disable animations on mobile frames to prevent scroll locking
+
   gsap.utils.toArray('.timeline-card').forEach((card) => {
     gsap.from(card, {
       opacity: 0,
