@@ -4,7 +4,7 @@ import CountUp from 'react-countup'
 
 const AnimatedCounter = () => {
     return (
-        <div id='counter' className='padding-x-lg xl:mt-0 mt-32'>
+        <div id='counter' className='hidden md:block padding-x-lg xl:mt-0 mt-32'>
             <div className='mx-auto grid-4-cols' >
                 {counterItems.map((item) => (
                     <div key={item.label} className='bg-zinc-900 rounded-lg p-10 flex  justify-center' >
@@ -12,6 +12,8 @@ const AnimatedCounter = () => {
                             <CountUp
                                 end={item.value}
                                 formattingFn={(value) => `${item.suffix}${value}`}
+                                enableScrollSpy={true}
+                                scrollSpyOnce={true}
                             />
                             <div className='text-white-50 text-lg'>
                                 {item.label}

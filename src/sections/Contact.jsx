@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
@@ -6,6 +6,15 @@ import ContactExperience from "../components/ContactModels/ContactExperience"
 const Contact = () => {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // trigger on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -106,16 +115,17 @@ const Contact = () => {
               </form>
             </div>
           </div>
-          <div className="xl:col-span-7 min-h-[500px] xl:min-h-full">
-            <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden relative">
-              {/* Transparent overlay to block touch on mobile, allowing page scroll */}
-              <div
-                className="absolute inset-0 z-50 md:hidden"
-                style={{ touchAction: 'pan-y' }}
-              />
-              <ContactExperience />
+          {!isMobile && (
+            <div className="xl:col-span-7 min-h-[500px] xl:min-h-full">
+              <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden relative">
+                <div
+                  className="absolute inset-0 z-50 md:hidden"
+                  style={{ touchAction: 'pan-y' }}
+                />
+                <ContactExperience />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

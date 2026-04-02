@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { words } from '../constants'
 import Button from '../components/Button'
@@ -14,10 +15,14 @@ const Hero = () => {
     }
   );
 
-  const isMobile = useMediaQuery(
-    { maxWidth: 767 },
-    { ssrMatchMedia: () => ({ matches: false }) }
-  );
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // set on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
     
     useGSAP(() => {
         gsap.fromTo(
