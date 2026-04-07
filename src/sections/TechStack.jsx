@@ -2,12 +2,9 @@
 import TitleHeader from '../components/TitleHeader'
 import { techStackImgs } from '../constants'
 
-
-
 const TechStack = () => {
-// bnuscas iconos y agregar, js next tailwind html css exprex sql posgre typescrip docker
     return (
-        <div id='skills' className=' flex-center flex-col section-padding'>
+        <div id='skills' className='flex-center flex-col section-padding'>
             <div className='w-full h-full md:px-10 p-5'>
                 <TitleHeader
                     title="My Preferred Tech Stack"
@@ -19,21 +16,19 @@ const TechStack = () => {
                 {techStackImgs.map((icon) => (
                     <div
                         key={icon.name}
-                        className="card-border tech-card overflow-hidden group  rounded-lg"
+                        /* Eliminamos 'group' y 'overflow-hidden' que suelen usarse para ocultar contenido */
+                        className="card-border tech-card rounded-lg p-6 flex flex-col items-center justify-center"
                     >
-                        <div className='tech-card-animated-bg'>
-                            <div className='tech-card-content'>
-                                <div className='tech-icon-wrapper'>
-                                    <img src={icon.imgPath}  alt=""  className='h-14 md:h-24' />
-                                         
-                                </div>
-                                <div className='padding-x w-full' >
-                                    <p className=' pb-4'>
-                                        {icon.name}
-                                    </p>
-
-                                </div>
-                            </div>
+                        {/* Eliminamos los wrappers de animación 'tech-card-animated-bg' y 'tech-card-content' */}
+                        <div className='flex flex-col items-center gap-4'>
+                            <img 
+                                src={icon.imgPath} 
+                                alt={icon.name} 
+                                className='h-14 md:h-20 object-contain' 
+                            />
+                            <p className='text-center font-medium'>
+                                {icon.name}
+                            </p>
                         </div>
                     </div>
                 ))}
